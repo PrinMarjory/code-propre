@@ -1,32 +1,53 @@
 package ex3;
 
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe représentant un zoo avec son nom et les animaux qu'il héberge
+ * @author Marjory PRIN
+ */
 public class Zoo {
-
-	private String nom;
-	private List<String> types;
-	private List<String> noms;
-	private List<String> comportements;
 	
+	/** nom : nom du zoo*/
+	private String nom;
+	
+	/** animaux : liste des animaux du zoo */
+	private List<Animal> animaux;
+	
+	
+	/** Constructeur
+	 * @param nom : nom du zoo
+	 */
 	public Zoo(String nom){
 		this.nom = nom;
+		this.animaux = new ArrayList<Animal>();
 	}
 	
-	public void addAnimal(String nomAnimal, String typeAnimal, String comportement){
-		types.add(typeAnimal);
-		noms.add(nomAnimal);
-		comportements.add(comportement);
+	
+	/**
+	 * Permet d'ajouter un animal au zoo
+	 * @param animal : l'animal à ajouter
+	 */
+	public void addAnimal(Animal animal){
+		animaux.add(animal);
 	}
 	
+	/**
+	 * Permet d'afficher la liste des animaux du zoo
+	 */
 	public void afficherListeAnimaux(){
-		for (int i=0; i<types.size(); i++) {
-			System.out.println(noms.get(i)+" "+types.get(i)+" "+comportements.get(i));
+		for (int i=0; i<animaux.size(); i++) {
+			System.out.println(animaux.get(i).getNom()+" "+animaux.get(i).getType()+" "+animaux.get(i).getComportement());
 		}
 	}
 	
-	public int taille() {
-		return types.size();
+	/**
+	 * Permet de récupérer le nombre d'animaux du zoo
+	 * @return le nombre d'animaux
+	 */
+	public int getNbAnimaux() {
+		return animaux.size();
 	}
 
 	/** Getter for nom
